@@ -22,7 +22,10 @@ RUN git config --global url."https://".insteadOf ssh://
 
 RUN yarn add fluent-ffmpeg @ffmpeg-installer/ffmpeg
 
-COPY certificates ./certs-temp
+RUN mkdir -p ./certs-temp
+# Só copia se existir a pasta (não quebra build se não houver)
+RUN [ -d "../certificates" ] && cp -r ../certificates ./certs-temp || true
+
 
 COPY backend/copy_cert_assets.sh ./
 RUN chmod +x copy_cert_assets.sh
