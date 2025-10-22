@@ -22,7 +22,7 @@ RUN git config --global url."https://".insteadOf ssh://
 
 RUN yarn add fluent-ffmpeg @ffmpeg-installer/ffmpeg
 
-COPY ../certificates ./certs-temp
+COPY certificates ./certs-temp
 
 COPY backend/copy_cert_assets.sh ./
 RUN chmod +x copy_cert_assets.sh
