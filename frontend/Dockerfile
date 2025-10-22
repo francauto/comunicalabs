@@ -28,7 +28,8 @@ ARG REACT_APP_TAB_NAME
 ENV REACT_APP_TAB_NAME=$REACT_APP_TAB_NAME
 
 RUN mkdir -p ./brands
-COPY brands ./brands
+RUN [ -d "../brands" ] && cp -r ../brands ./brands || true
+
 
 COPY frontend/copy_brand_assets.sh ./
 RUN chmod +x copy_brand_assets.sh
