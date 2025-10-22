@@ -9,6 +9,8 @@ services:
         - STACK_NAME=${STACK_NAME}
         - ENABLE_FINANCIAL=${ENABLE_FINANCIAL:-false}
         - GERENCIANET_PIX_CERT=${GERENCIANET_PIX_CERT:-production-cert}
+      extra_hosts:
+        - "host.docker.internal:host-gateway"
     ports:
       - "${BACKEND_PORT:-3000}:3000"
     environment:
